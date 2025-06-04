@@ -1,0 +1,840 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="مكتب TEACHER PRO - خدمات تعليمية احترافية من حل الواجبات إلى تصميم العروض التقديمية والأبحاث العلمية"/>
+  <title>مكتب: TEACHER PRO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #f8c471;
+      --dark: #2d3a4b;
+      --light: #ffffff;
+      --nav-bg: #34495e;
+      --section-bg: rgba(255,255,255,0.85);
+      --text: #2d3a4b;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: linear-gradient(120deg, #232526, #414345);
+      color: #f8f8f8;
+    }
+    header {
+      background: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1002;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+    }
+    nav {
+      background: var(--nav-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      color: white;
+      position: sticky;
+      top: 80px;
+      z-index: 1001;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    }
+    nav .links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    nav .links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    nav .links a:hover, nav .links a.active {
+      background: var(--primary);
+      color: #222;
+    }
+    .theme-toggle {
+      margin-right: 0;
+      margin-left: 20px;
+      font-size: 1.3em;
+      cursor: pointer;
+      color: #fff;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+    .theme-toggle:hover {
+      color: var(--primary);
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: var(--dark);
+      border-right: 6px solid var(--primary);
+      padding-right: 10px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cairo', sans-serif;
+    }
+    body.dark-mode .section-title,
+    body.dark-mode .service h4,
+    body.dark-mode .portfolio-category h4 {
+      color: var(--primary);
+    }
+    .intro img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    .reviews, .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .reviews {
+      flex-direction: column;
+    }
+    .review {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .review h4 {
+      margin-bottom: 5px;
+    }
+    .stars {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .service {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex: 1 1 45%;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+    }
+    .service:hover {
+      box-shadow: 0 6px 20px rgba(52, 73, 94, 0.15);
+      transform: translateY(-4px) scale(1.02);
+      cursor: pointer;
+    }
+    .service h4 {
+      color: var(--dark);
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .service p {
+      font-size: 0.8em;
+      color: #333;
+      line-height: 1.8;
+    }
+    .service.simplify p {
+      font-size: 0.7em;
+    }
+    .service a.button {
+      background-color: var(--primary);
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      margin-top: 15px;
+      transition: background 0.3s;
+      font-size: 0.85em;
+    }
+    .service a.button:hover {
+      background-color: #f5b041;
+    }
+    .auth-form input,
+    .auth-form button,
+    .auth-form textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 1em;
+    }
+    .auth-form button {
+      background: var(--primary);
+      color: #222;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .auth-form button:hover {
+      background: #f5b041;
+    }
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+    /* قسم أعمالنا */
+    #portfolio {
+      margin: 60px auto 0 auto;
+      max-width: 1100px;
+      padding: 40px 20px;
+      background: var(--section-bg);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.08);
+    }
+    .portfolio-category {
+      margin-bottom: 40px;
+    }
+    .portfolio-category h4 {
+      color: var(--primary);
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .portfolio-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    .portfolio-gallery img {
+      width: 120px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #eee;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 6px rgba(44,62,80,0.08);
+      background: #fff;
+      cursor: pointer;
+    }
+    .portfolio-gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 16px rgba(52,73,94,0.20);
+      border-color: var(--primary);
+    }
+    /* Modal لتكبير الصور */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      margin-top: 50px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: var(--primary);
+    }
+    /* قسم من نحن */
+    .about-section {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .about-section h3 {
+      color: var(--dark);
+      border-right: 4px solid var(--primary);
+      padding-right: 10px;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    .about-section p {
+      font-size: 0.50em; /* تم تصغير حجم الخط هنا */
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    /* القائمة الجانبية */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      background-color: var(--nav-bg);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+    .sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 1.1em;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: var(--primary);
+      color: #222;
+    }
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      font-size: 2em;
+      margin-left: 50px;
+    }
+    body.dark-mode .service,
+    body.dark-mode #portfolio {
+      background: #222d36;
+      color: #f8f8f8;
+    }
+    body.dark-mode .service,
+    body.dark-mode .portfolio-gallery img {
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+    body.dark-mode .portfolio-gallery img {
+      background: #222d36;
+      border-color: #444;
+    }
+    body.dark-mode nav,
+    body.dark-mode header {
+      background: #171c22;
+      color: #f8f8f8;
+    }
+    body.dark-mode nav .links a {
+      color: #f8f8f8;
+    }
+    body.dark-mode nav .links a:hover, 
+    body.dark-mode nav .links a.active {
+      background: var(--primary);
+      color: #222;
+    }
+    body.dark-mode .auth-form input,
+    body.dark-mode .auth-form textarea {
+      background: #222d36;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    body.dark-mode .auth-form button {
+      background: var(--primary);
+      color: #222;
+    }
+    body.dark-mode .about-section,
+    body.dark-mode .review {
+      background: #222d36;
+      color: #f8f8f8;
+    }
+    body.dark-mode .sidebar {
+      background-color: #171c22;
+    }
+    body.dark-mode .stars {
+      color: #f8c471;
+    }
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 20px;
+    }
+    /* Sticky compensation for mobile */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      nav .links {
+        display: none;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+      .section-title {
+        font-size: 1.1em;
+      }
+      .portfolio-gallery img {
+        width: 90px;
+        height: 65px;
+      }
+      header {
+        padding: 10px;
+        justify-content: center;
+      }
+      .logo {
+        height: 40px;
+      }
+      .service {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <header>
+    <button class="menu-btn" id="menuBtn" onclick="openNav()">☰</button>
+    <img src="https://www2.0zz0.com/2025/06/03/18/634516616.png" alt="شعار TEACHER PRO" class="logo">
+    <h1>مكتب: TEACHER PRO</h1>
+  </header>  <nav>
+    <div class="links">
+      <a href="#intro">الرئيسية</a>
+      <a href="#about">من نحن</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#portfolio">أعمالنا</a>
+      <a href="#reviews">آراء العملاء</a>
+      <a href="#order">طلب خدمة</a>
+      <a href="#contact">تواصل معنا</a>
+      <a href="privacy.html">سياسة الخصوصية</a>
+    </div>
+  </nav>  <!-- القائمة الجانبية -->  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#intro" onclick="closeNav()">الرئيسية</a>
+    <a href="#about" onclick="closeNav()">من نحن</a>
+    <a href="#services" onclick="closeNav()">خدماتنا</a>
+    <a href="#portfolio" onclick="closeNav()">أعمالنا</a>
+    <a href="#reviews" onclick="closeNav()">آراء العملاء</a>
+    <a href="#order" onclick="closeNav()">طلب خدمة</a>
+    <a href="#contact" onclick="closeNav()">تواصل معنا</a>
+    <a href="privacy.html" onclick="closeNav()">سياسة الخصوصية</a>
+    <a href="#" onclick="toggleDarkMode(); closeNav();"><i class="fas fa-moon"></i> الوضع الليلي</a>
+  </div>  <section id="intro" class="intro">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="teacher" />
+    <h2>مرحبًا بك في مكتب: TEACHER PRO</h2>
+    <p>نقدم لك خدمات تعليمية واحترافية متكاملة</p>
+  </section>  <section id="about">
+    <div class="section-title"><i class="fas fa-info-circle"></i> عن المكتب</div><div class="about-section">
+  <h3><i class="fas fa-users"></i> من نحن</h3>
+  <p>
+    نحن فريق من المحترفين والخبراء في المجال التعليمي، نقدم خدمات تعليمية متميزة منذ عام 2018. 
+    نتميز بدقة المواعيد وجودة العمل والالتزام بمعايير البحث العلمي. فريقنا مؤلف من أساتذة 
+    جامعيين ومتخصصين في مختلف المجالات العلمية والأكاديمية.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3><i class="fas fa-eye"></i> رؤيتنا</h3>
+  <p>
+    أن نكون الخيار الأول للطلاب والباحثين في مجال الخدمات التعليمية والاستشارات الأكاديمية، 
+    من خلال تقديم حلول مبتكرة تلبي احتياجات العملاء وتساعدهم في تحقيق أهدافهم العلمية 
+    والمهنية بأعلى معايير الجودة.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3><i class="fas fa-bullseye"></i> هدفنا</h3>
+  <p>
+    تقديم خدمات تعليمية وبحثية متميزة تساعد الطلاب والباحثين على تخطي الصعوبات الأكاديمية، 
+    مع الحفاظ على الأمانة العلمية والجودة العالية. نهدف إلى تبسيط العلوم وتقديم المحتوى 
+    الأكاديمي بأسلوب واضح ومفهوم.
+  </p>
+</div>
+
+  </section>  <section id="services">
+    <div class="section-title"><i class="fas fa-concierge-bell"></i> خدماتنا</div>
+    <div class="services">
+      <div class="service">
+        <h4>حل التكاليف و الواجبات والاختبارات الجامعية</h4>
+        <p>
+          نساعدك في حل الواجبات والتكاليف والاختبارات الجامعية لجميع المراحل. فريقنا المتخصص يقدم الدعم في دراسات الحالة،
+          الأبحاث، مشاريع التخرج، وغيرها من التكاليف الدراسية، لضمان نتائج ممتازة تتوافق مع متطلبات المناهج الدراسية.
+        </p>
+        <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+      </div><div class="service">
+    <h4>كتابة الأبحاث العلمية</h4>
+    <p>
+      نقدم خدمات كتابة الأبحاث العلمية بمهارة واحترافية. تتضمن الخدمة جمع المصادر والمراجع العلمية، كتابة الإطار النظري،
+      وتحليل البيانات باستخدام أدوات مثل SPSS لضمان الحصول على نتائج دقيقة ومميزة.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service">
+    <h4>PowerPoint تصميم عروض</h4>
+    <p>
+      سواء كنت تقدم بحثًا، مشروع تخرج، أو محاضرة، سنقوم بتصميم عروض تقديمية جذابة توضح الأفكار بأسلوب سلس واحترافي.
+      تصاميمنا تساعدك على إيصال المفاهيم المعقدة بطريقة بسيطة وملفتة.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service">
+    <h4>التصاميم الهندسية والمشاريع</h4>
+    <p>
+      نوفر خدمات إعداد التصاميم الهندسية والمشاريع المعمارية وفق أحدث البرامج والمعايير. يتضمن عملنا إعداد الرسومات
+      والمخططات، إضافةً إلى دعم المشاريع الهندسية من خلال فريق مختص يضمن دقة واحترافية عالية.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service">
+    <h4>تصميم السيرة الذاتية والدعوات</h4>
+    <p>
+      نقدم خدمة تصميم سيرة ذاتية احترافية تساعدك على إبراز مهاراتك وخبراتك بطريقة منظمة وجذابة، بالإضافة إلى تصميم دعوات مميزة تناسب جميع المناسبات (زفاف، تخرج، مواليد، وغيرها) بتصاميم عصرية وذوق راقٍ.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service">
+    <h4>تصميم إعلانات تجارية</h4>
+    <p>
+      نصمّم إعلانات تجارية جذابة وفعّالة تناسب مختلف المنصات (سوشيال ميديا، مطبوعات، لافتات وغيرها)، بأسلوب احترافي يعكس هوية نشاطك ويجذب جمهورك المستهدف، مع التركيز على الرسائل التسويقية المؤثرة.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service">
+    <h4>تصميم فيديوهات تسويقية</h4>
+    <p>
+      نقدّم فيديوهات تسويقية احترافية تساعدك في عرض خدماتك أو منتجاتك بطريقة جذابة ومؤثرة. نعتني بكل التفاصيل من كتابة السيناريو، التصميم، المونتاج، وصولاً لإخراج فيديو يعبر عن هويتك ويشد انتباه جمهورك.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+  
+  <div class="service simplify" style="flex: 1 1 100%;">
+    <h4>شرح وتبسيط المقررات الدراسية</h4>
+    <p style="font-size: 0.7em;">
+      ندرك أن بعض المقررات الدراسية قد تبدو معقدة ومليئة بالمفاهيم الصعبة، لذلك نقدم خدمة شرح وتبسيط هذه المواد بطريقة تسهل
+      فهمها واستيعابها، حيث نعتمد على توضيح المفاهيم الأساسية، وربطها بأمثلة واقعية، وتقديم شروحات مُبسطة تسهّل على الطالب متابعة دراسته بثقة أكبر وتحقيق أداء أفضل.
+    </p>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" class="button" target="_blank">اطلب الخدمة</a>
+  </div>
+</div>
+
+  </section>  <!-- قسم أعمالنا -->  <section id="portfolio">
+    <div class="section-title"><i class="fas fa-briefcase"></i> أعمالنا</div><div class="portfolio-category">
+  <h4><i class="fas fa-desktop"></i> عروض بوربوينت احترافية</h4>
+  <div class="portfolio-gallery">
+    <img src="https://imgg.io/images/2025/06/03/9705ff139da7001c1d4fc960f8a3ab7e.jpg" alt="عرض بوربوينت 1" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/764c8238bcec569b7f85210c802be3cd.jpg" alt="عرض بوربوينت 2" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/e7ac53170e670485a99fc3edf33e92b2.jpg" alt="عرض بوربوينت 3" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/999db1c8751ee20e3cec34925bd8c4da.jpg" alt="عرض بوربوينت 4" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/248b2710e1e77ee09e0db23bd45747a5.jpg" alt="عرض بوربوينت 5" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/90b99abb6d5954fca1c86d4efb9d66c7.jpg" alt="عرض بوربوينت 6" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/4ef17269a71c63ff297c14cae23555b8.jpg" alt="عرض بوربوينت 7" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/d5004bde1aeff815ac3c16ce8a352061.jpg" alt="عرض بوربوينت 8" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/e43b76c5d57e602a650de8d2b198fad4.jpg" alt="عرض بوربوينت 9" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/f56f8940a6925dcebb29de8182741ccd.jpg" alt="عرض بوربوينت 10" onclick="openModal(this)">
+  </div>
+</div>
+
+<div class="portfolio-category">
+  <h4><i class="fas fa-file-alt"></i> بحوث علمية وتقارير</h4>
+  <div class="portfolio-gallery">
+    <img src="https://imgg.io/images/2025/06/03/7411625ef262f59049d2987fbd2a9b9e.jpg" alt="بحث علمي 1" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/d77f6e715563ff21727cc1f9676449b1.jpg" alt="بحث علمي 2" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/0eff49a1b5c5d83ba3cc4dd72ac2445d.jpg" alt="بحث علمي 3" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/6696fb13ca6cc0c847f35c2753b63c77.jpg" alt="بحث علمي 4" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/b2ad5dd5bf648dba5914bc52082ff9c1.jpg" alt="بحث علمي 5" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/a72399b2a8b40bfe5f0883a3244a83ed.jpg" alt="بحث علمي 6" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/54c23b0e937c15bec75bb4efcc893c73.jpg" alt="بحث علمي 7" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/fdf8dcdd99d8dc05d796da86c142b004.jpg" alt="بحث علمي 8" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/eaad340e049d466588af0ed31eab2bd7.jpg" alt="بحث علمي 9" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/54a1fd071758d9c0243686d2466dd069.jpg" alt="بحث علمي 10" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/0f18015c85213e68ec9b4222c9548e6c.jpg" alt="بحث علمي 11" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/6ab55f89fdf609c345b6ff50a785cc1b.jpg" alt="بحث علمي 12" onclick="openModal(this)">
+  </div>
+</div>
+
+<div class="portfolio-category">
+  <h4><i class="fas fa-paint-brush"></i> تصاميم متنوعة</h4>
+  <div class="portfolio-gallery">
+    <img src="https://imgg.io/images/2025/06/03/e3e1bf10e1ca75123255855805a9cdb2.jpg" alt="تصميم 1" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/d1fbd7b61282b215a8f383571fd0ddb2.jpg" alt="تصميم 2" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/0e6135ef54803c493864cfa7bb7ae6f2.jpg" alt="تصميم 3" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/03f9d5289e9314214223d1642e0f2181.jpg" alt="تصميم 4" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/203ee6a4f73ccba2e9083509f0962852.jpg" alt="تصميم 5" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/efee004d54c416d7a5974dee74b50777.jpg" alt="تصميم 6" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/4bdd2151d04b24bf99152b8b89342b89.jpg" alt="تصميم 7" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/1344ef94553adbd0a0ac3117af8de77e.jpg" alt="تصميم 8" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/2e543867b7d8e0ac5508dc63870a9118.jpg" alt="تصميم 9" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/2cff045403ce1e0ce76aff13b3a15269.jpg" alt="تصميم 10" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/888c18960dbdc458b7aea1cd1ab05d05.jpg" alt="تصميم 11" onclick="openModal(this)">
+  </div>
+</div>
+
+<div class="portfolio-category">
+  <h4><i class="fas fa-drafting-compass"></i> مشاريع هندسية</h4>
+  <div class="portfolio-gallery">
+    <img src="https://imgg.io/images/2025/06/03/902e5f20a0669e9d2944a92ea361294a.jpg" alt="مشروع هندسي 1" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/5afbb5c95fd9bd3b9f3d9bd92d283776.jpg" alt="مشروع هندسي 2" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/ac2dbfd608abc8a440365d273918b2f4.jpg" alt="مشروع هندسي 3" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/2b93900ba64e8b61af735eae2a4d3212.jpg" alt="مشروع هندسي 4" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/83a58917343220b99371de351f5cc26f.jpg" alt="مشروع هندسي 5" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/9641cb17e3fbf8b729151178688e816b.jpg" alt="مشروع هندسي 6" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/391d30269620d3a57bd7584b582025f0.jpg" alt="مشروع هندسي 7" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/f6712857ca7100e52f346364b9abac60.jpg" alt="مشروع هندسي 8" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/4753b61d75807cbf0f9d609fe8f6434a.jpg" alt="مشروع هندسي 9" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/4deb2341a3cad95e837c931db9d17b70.jpg" alt="مشروع هندسي 10" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/fd280f5fe463946a9d428198f197534c.jpg" alt="مشروع هندسي 11" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/b4b91ea902aee0cf76bb832248a3ca41.jpg" alt="مشروع هندسي 12" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/75e2dfba93b1190972f4cefb7f481840.webp" alt="مشروع هندسي 13" onclick="openModal(this)">
+  </div>
+</div>
+
+<div class="portfolio-category">
+  <h4><i class="fas fa-check-circle"></i> حل كويزات واختبارات +A</h4>
+  <div class="portfolio-gallery">
+    <img src="https://imgg.io/images/2025/06/03/e0a740abb5322b12e7f1d71266d4d4d0.jpg" alt="كويز 1" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/01fff3d50c7051f2aca94a50bbad8f91.jpg" alt="كويز 2" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/517efc2dcc193519607ba9f839c5cd94.jpg" alt="كويز 3" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/ca0c502197d6dc32768358f0cf2e98f2.jpg" alt="كويز 4" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/97f8f7a3ba03ea161fec3a195f2b1196.jpg" alt="كويز 5" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/6117c1dc2266bd17816997c684a98514.jpg" alt="كويز 6" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/7b1349d8968410101e78b87fc849923c.jpg" alt="كويز 7" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/1baabc5774638b324c94e75c85f33247.jpg" alt="كويز 8" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/65370c6844fb2ed1da7484e627138b61.jpg" alt="كويز 9" onclick="openModal(this)">
+    <img src="https://imgg.io/images/2025/06/03/8f92932fb7b83453f730931942136d3e.jpg" alt="كويز 10" onclick="openModal(this)">
+  </div>
+</div>
+
+  </section>  <!-- Modal لتكبير الصور -->  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>  <section id="reviews">
+    <div class="section-title"><i class="fas fa-comments"></i> آراء العملاء</div>
+    <div class="reviews">
+      <div class="review">
+        <h4>أحمد السعيد</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>خدمة ممتازة وسريعة جدًا، ساعدوني في حل اختبارات مادة الإحصاء وحصلت على درجة كاملة، شكرًا لكم!</p>
+      </div>
+      <div class="review">
+        <h4>نورة محمد</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>أنصح بالتعامل معهم، مبدعين في تصميم العروض التقديمية، قدمت العرض وحصلت على إشادة من الدكتور!</p>
+      </div>
+      <div class="review">
+        <h4>خالد عبدالله</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>فريق محترف جدًا، ساعدوني في كتابة بحث التخرج وكان البحث مميزًا ومطابقًا لجميع الشروط العلمية.</p>
+      </div>
+      <div class="review">
+        <h4>سارة علي</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>شكرًا لكم على تبسيط المقرر الدراسي، كانت المادة صعبة ولكن بمساعدتكم أصبحت مفهومة جدًا.</p>
+      </div>
+      <div class="review">
+        <h4>فيصل ناصر</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <p>أفضل مكتب تعاملت معه، دقة في المواعيد وجودة في العمل، أنصح الجميع بهم.</p>
+      </div>
+      <div class="review">
+        <h4>لينا أحمد</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>تصميم السيرة الذاتية كان رائعًا جدًا، حصلت على عدة عروض عمل بعد استخدام التصميم الذي قدموه.</p>
+      </div>
+      <div class="review">
+        <h4>ياسر وليد</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>الفيديو التسويقي الذي صمموه لشركتنا ساعد في زيادة المبيعات بنسبة 40%، شكرًا للفريق الرائع.</p>
+      </div>
+      <div class="review">
+        <h4>هناء سعد</h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>الإعلانات التجارية التي صمموها كانت احترافية وجذابة، لاحظنا زيادة كبيرة في التفاعل مع العلامة التجارية.</p>
+      </div>
+    </div>
+  </section>  <section id="order" class="auth-form">
+    <h3>طلب خدمة</h3>
+    <input type="text" id="orderName" placeholder="الاسم الكامل" />
+    <input type="email" id="orderEmail" placeholder="البريد الإلكتروني" />
+    <input type="text" id="orderType" placeholder="نوع الخدمة (بحث، واجب،..)" />
+    <input type="date" id="orderDate" />
+    <textarea id="orderDetails" placeholder="تفاصيل إضافية" rows="4"></textarea>
+    <button onclick="submitOrder()">إرسال الطلب</button>
+    <small>بالنقر على "إرسال الطلب" فإنك توافق على <a href="privacy.html" target="_blank">سياسة الخصوصية</a>.</small>
+    <p id="orderMsg" style="color: green;"></p>
+  </section>  <section id="contact" class="intro">
+    <h2>تواصل معنا عبر واتساب أو البريد الإلكتروني</h2>
+    <a href="https://wa.me/message/G2EJ3IV4MYALD1" target="_blank">اضغط هنا للتواصل عبر واتساب</a>
+    <p>أو عبر البريد الإلكتروني: <a href="mailto:proteacher051@gmail.com">proteacher051@gmail.com</a></p>
+  </section>  <footer>
+    جميع الحقوق محفوظة © 2025 مكتب: TEACHER PRO | <a href="privacy.html">سياسة الخصوصية</a>
+  </footer>  <script>
+    // القائمة الجانبية
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+    
+    // الوضع الداكن
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      // حفظ التفضيل في localStorage
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+    
+    // التحقق من الوضع المحفوظ عند تحميل الصفحة
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+    }
+    
+    // Modal لتكبير الصور
+    function openModal(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    }
+    
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+    
+    // إغلاق المودال عند النقر خارج الصورة
+    window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+    
+    // إرسال الطلب عبر واتساب
+    function submitOrder() {
+      const name = document.getElementById("orderName").value.trim();
+      const email = document.getElementById("orderEmail").value.trim();
+      const type = document.getElementById("orderType").value.trim();
+      const date = document.getElementById("orderDate").value.trim();
+      const details = document.getElementById("orderDetails").value.trim();
+      const msg = document.getElementById("orderMsg");
+      
+      if (name && email && type && date) {
+        // بناء نص الرسالة
+        let text = `طلب خدمة جديد:%0A`;
+        text += `الاسم: ${name}%0A`;
+        text += `البريد الإلكتروني: ${email}%0A`;
+        text += `نوع الخدمة: ${type}%0A`;
+        text += `التاريخ المطلوب: ${date}%0A`;
+        if(details) text += `تفاصيل إضافية: ${details}%0A`;
+        
+        // فتح واتساب
+        window.open(`https://wa.me/message/G2EJ3IV4MYALD1?text=${text}`, '_blank');
+        msg.style.color = "green";
+        msg.textContent = "✅ تم تحويلك إلى واتساب لإتمام الطلب.";
+      } else {
+        msg.style.color = "red";
+        msg.textContent = "يرجى تعبئة جميع الحقول.";
+      }
+    }
+    
+    // إخفاء القائمة عند التمرير
+    window.onscroll = function() {
+      if (window.innerWidth <= 768) {
+        closeNav();
+      }
+    };
+  </script></body>
+</html>
